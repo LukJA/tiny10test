@@ -1,0 +1,57 @@
+low_SDA:			// SDA -> GND
+	set sda output
+	set low
+	
+high_SDA:			// SDA -> tristate
+	set sda input
+	
+low_SCL:			// SCL -> GND
+	set scl output
+	set output low
+	
+high_SCL:			// SCL -> tristate
+	set scl input
+	
+read_sda:
+	set sda input
+	read sda
+	
+read_scl:
+	set scl input
+	read scl
+
+start_condition:
+	high_SDA // should be default
+	high_SCL
+	
+	// maybe wait?
+	
+	low_SDA
+	delay
+	low_SCL
+	delay
+	
+
+stop_condition:
+	low_SDA
+	delay
+	high_SCL
+	high_SDA
+
+write_bit:
+	if bit
+		high_SDA
+	else
+		low_SDA
+	delay
+	high_SCL
+	delay
+	low_SCL
+	
+read_bit:
+	delay
+	high_SCL
+	delay
+	read into location
+	delay
+	low_SCL
