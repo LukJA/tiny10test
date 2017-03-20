@@ -46,5 +46,7 @@ uart_byte:
 // uart input a byte
 
 uart_recieve:
+	
+	nop 
 
 	ret

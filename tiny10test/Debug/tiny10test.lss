@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.6  C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\main.asm Mon Mar 20 21:46:53 2017
+AVRASM ver. 2.2.6  C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\main.asm Mon Mar 20 21:48:04 2017
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATtiny_DFP\1.1.102\avrasm\inc\tn10def.inc'
 C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\main.asm(67): warning: Register r28 already defined by the .DEF directive
@@ -521,7 +521,7 @@ C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\main.asm(232): I
                                  // enable all axes, normal mode 100Hz rate
 000009 e250                      ldi SAD, CTRL_REG1
 00000a ea67                      ldi DAT, 0xA7
-00000b d0ef                      rcall LIS_CMD
+00000b d0f0                      rcall LIS_CMD
                                  
                                  // disable the HP filter
                                  //ldi SAD, CTRL_REG2
@@ -531,12 +531,12 @@ C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\main.asm(232): I
                                  // Int driven to INT1 pin
 00000c e252                      ldi SAD, CTRL_REG3
 00000d e460                      ldi DAT, 0x40
-00000e d0ec                      rcall LIS_CMD
+00000e d0ed                      rcall LIS_CMD
                                  
                                  // Full Scale = 16G
 00000f e253                      ldi SAD, CTRL_REG4
 000010 e360                      ldi DAT, 0x30
-000011 d0e9                      rcall LIS_CMD
+000011 d0ea                      rcall LIS_CMD
                                  
                                  // Interupt latched 
                                  // commenting out will remove latching effect
@@ -547,17 +547,17 @@ C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\main.asm(232): I
                                  // threshold absolute 
 000012 e352                      ldi SAD, INT1_THS
 000013 e76f                      ldi DAT, 0x7F
-000014 d0e6                      rcall LIS_CMD
+000014 d0e7                      rcall LIS_CMD
                                  
                                  // Set minimum duration to x <- this is effectively sensitivity
 000015 e353                      ldi SAD, INT1_DURATION
 000016 e069                      ldi DAT, 0x09
-000017 d0e3                      rcall LIS_CMD
+000017 d0e4                      rcall LIS_CMD
                                  
                                  // interrupt generation on all axis
 000018 e350                      ldi SAD, INT1_CFG
 000019 e06a                      ldi DAT, 0x0A
-00001a d0e0                      rcall LIS_CMD
+00001a d0e1                      rcall LIS_CMD
                                  
                                  // ---------------
                                  
@@ -567,7 +567,7 @@ C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\main.asm(232): I
 00001b e0f0                      ldi EEH, 0x00		// set location 0
 00001c e0e0                      ldi EEL, 0x00		// set location 0
                                  
-00001d d0eb                      rcall EEP_READ_BYTE	// load the low byte
+00001d d0ec                      rcall EEP_READ_BYTE	// load the low byte
                                  
 00001e 2fd3                      mov EEC, RBytr		// set the new write addr
 00001f e0d0                      ldi EEC, 0x00
@@ -583,7 +583,7 @@ C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\main.asm(232): I
 000022 e0c6                      ldi WPS, 0B0110		// highest timeout 
 000023 2700                      clr GPR
 000024 bf01                      out WDTCSR, GPR			// clean up
-000025 d124                      rcall load_prescaler
+000025 d125                      rcall load_prescaler
                                  
                                  // enable pin change int on SCL for button, PB1 for LIS
                                  
@@ -622,12 +622,12 @@ C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\main.asm(232): I
 000031 d030                      	rcall read_SCL	// read the pin to check if it was the button
                                  
 000032 ff20                      	sbrs RBitr, SCL	// if it was run button
-000033 d158                      	rcall button_event // button
+000033 d159                      	rcall button_event // button
                                  
 000034 d033                      	rcall read_PB1 // read to see if it was the accelerometer
                                  
 000035 ff21                      	sbrs RBitr, PB1 // if it was run accel
-000036 d12b                      	rcall accel_event
+000036 d12c                      	rcall accel_event
                                  
 000037 9478                      	sei
                                  
@@ -646,10 +646,10 @@ C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\main.asm(232): I
 00003e bf01                      	out WDTCSR, GPR
                                  
 00003f ef8f                      	ldi DEL, 255 // delay		
-000040 d086                      	rcall delay
+000040 d087                      	rcall delay
                                  
 000041 ef8f                      	ldi DEL, 255 // delay			 
-000042 d084                      	rcall delay
+000042 d085                      	rcall delay
                                  
 000043 d009                      	rcall high_SDA // pulse led
                                  	
@@ -882,7 +882,7 @@ C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\main.asm(232): I
 0000ae dfbf                      	rcall low_PB1			// start condition is initially low
                                  
 0000af e084                      	ldi DEL, 4				// tuning delay
-0000b0 d016                      	rcall delay
+0000b0 d017                      	rcall delay
 0000b1 0000                      	nop						// tuning delay
 0000b2 0000                      	nop
                                  
@@ -896,7 +896,7 @@ C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\main.asm(232): I
 0000b8 9546                      	lsr WOT					// left shift to the next bit to send
                                  		
 0000b9 e083                      	ldi DEL, 3				// tuning delay
-0000ba d00c                      	rcall delay
+0000ba d00d                      	rcall delay
                                  
 0000bb 0000                      	nop						// tuning delay
 0000bc 0000                      	nop
@@ -916,28 +916,29 @@ C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\main.asm(232): I
                                  // uart input a byte
                                  
                                  uart_recieve:
+                                 	
+0000c6 0000                      	nop 
                                  
-0000c6 9508                      
+0000c7 9508                      
                                  
                                  // User routines
                                  
                                  /* just something to delay by twice the number in DEL */
                                  delay:
                                  	d_s:
-0000c7 958a                      	dec DEL
-0000c8 0000                      	nop
+0000c8 958a                      	dec DEL
 0000c9 0000                      	nop
-0000ca 3080                      	cpi DEL, 0
-0000cb f7d9                      	brne d_s
+0000ca 0000                      	nop
+0000cb 3080                      	cpi DEL, 0
+0000cc f7d9                      	brne d_s
                                  
-0000cc 9508                      	ret
+0000cd 9508                      	ret
                                  
                                  delayL:
                                  	dLH_s:
-0000cd 959a                      	dec DELH
+0000ce 959a                      	dec DELH
                                  	dL_s:
-0000ce 958a                      	dec DEL
-0000cf 0000                      	nop
+0000cf 958a                      	dec DEL
 0000d0 0000                      	nop
 0000d1 0000                      	nop
 0000d2 0000                      	nop
@@ -957,70 +958,71 @@ C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\main.asm(232): I
 0000e0 0000                      	nop
 0000e1 0000                      	nop
 0000e2 0000                      	nop
-0000e3 3080                      	cpi DEL, 0
-0000e4 f749                      	brne dL_s
-0000e5 3090                      	cpi DELH, 0
-0000e6 f731                      	brne dLH_s
+0000e3 0000                      	nop
+0000e4 3080                      	cpi DEL, 0
+0000e5 f749                      	brne dL_s
+0000e6 3090                      	cpi DELH, 0
+0000e7 f731                      	brne dLH_s
                                  
-0000e7 9508                      	ret
+0000e8 9508                      	ret
                                  
                                  /* Read command for LIS3DH 
                                     reads sub-address SAD into RBytr */
                                  LIS_READ:
                                  
-0000e8 df90                      	rcall start_condition	// start con
+0000e9 df8f                      	rcall start_condition	// start con
                                  
-0000e9 e340                      	ldi WOT, LIS_W			// lis addr + write slave identifier into WOT
-0000ea dfaf                      	rcall write_byte		// Write the above to the bus
-0000eb dfa3                      	rcall read_bit			// slave Acknowledge (no error checking yet)
+0000ea e340                      	ldi WOT, LIS_W			// lis addr + write slave identifier into WOT
+0000eb dfae                      	rcall write_byte		// Write the above to the bus
+0000ec dfa2                      	rcall read_bit			// slave Acknowledge (no error checking yet)
                                  
-0000ec e08a                      	ldi DEL, 10				// TAKE 5
-0000ed dfd9                      	rcall delay
+0000ed e08a                      	ldi DEL, 10				// TAKE 5
+0000ee dfd9                      	rcall delay
                                  
-0000ee 2f45                      	mov WOT, SAD			// value of SAD (sub address in lis reg file) into WOT
-0000ef dfaa                      	rcall write_byte		// Write the above to the bus
-0000f0 df9e                      	rcall read_bit			// slave Acknowledge (no error checking yet)
+0000ef 2f45                      	mov WOT, SAD			// value of SAD (sub address in lis reg file) into WOT
+0000f0 dfa9                      	rcall write_byte		// Write the above to the bus
+0000f1 df9d                      	rcall read_bit			// slave Acknowledge (no error checking yet)
                                  
-0000f1 df87                      	rcall start_condition	// repeated start con
+0000f2 df86                      	rcall start_condition	// repeated start con
                                  
-0000f2 e341                      	ldi WOT, LIS_R			// lis addr + read slave identifier into WOT
-0000f3 dfa6                      	rcall write_byte		// Write the above to the bus
-0000f4 df9a                      	rcall read_bit			// slave Acknowledge (no error checking yet)
+0000f3 e341                      	ldi WOT, LIS_R			// lis addr + read slave identifier into WOT
+0000f4 dfa5                      	rcall write_byte		// Write the above to the bus
+0000f5 df99                      	rcall read_bit			// slave Acknowledge (no error checking yet)
                                  
-0000f5 e085                      	ldi DEL, 5				// TAKE 5
-0000f6 dfd0                      	rcall delay
+0000f6 e085                      	ldi DEL, 5				// TAKE 5
+0000f7 dfd0                      	rcall delay
                                   
-0000f7 dfaa                      	rcall read_byte			// read a byte into RBytr for use 
-0000f8 df96                      	rcall read_bit			// Master Not Acknowledge 
+0000f8 dfa9                      	rcall read_byte			// read a byte into RBytr for use 
+0000f9 df95                      	rcall read_bit			// Master Not Acknowledge 
                                  
-0000f9 df87                      	rcall stop_condition	// stop con
+0000fa df86                      	rcall stop_condition	// stop con
                                  
-0000fa 9508                      	ret
+0000fb 9508                      	ret
                                  
                                  /* Write command for LIS3DH 
                                     writes DAT into sub-address SAD */
                                  LIS_CMD:	 
                                  
-0000fb df7d                      	rcall start_condition	// start con
+0000fc df7c                      	rcall start_condition	// start con
                                  
-0000fc e340                      	ldi WOT, LIS_W			// lis addr + write slave identifier into WOT
-0000fd df9c                      	rcall write_byte		// Write the above to the bus
-0000fe df90                      	rcall read_bit			// slave Acknowledge (no error checking yet)
+0000fd e340                      	ldi WOT, LIS_W			// lis addr + write slave identifier into WOT
+0000fe df9b                      	rcall write_byte		// Write the above to the bus
+0000ff df8f                      	rcall read_bit			// slave Acknowledge (no error checking yet)
                                  
-0000ff 2f45                      	mov WOT, SAD			// value of SAD (sub address in lis reg file) into WOT
-000100 df99                      	rcall write_byte		// Write the above to the bus
-000101 df8d                      	rcall read_bit			// slave Acknowledge (no error checking yet)
+000100 2f45                      	mov WOT, SAD			// value of SAD (sub address in lis reg file) into WOT
+000101 df98                      	rcall write_byte		// Write the above to the bus
+000102 df8c                      	rcall read_bit			// slave Acknowledge (no error checking yet)
                                  
-000102 2f46                      	mov WOT, DAT			// value of DAT into WOT
-000103 df96                      	rcall write_byte		// Write the above to the bus
-000104 df8a                      	rcall read_bit			// slave Acknowledge (no error checking yet)
+000103 2f46                      	mov WOT, DAT			// value of DAT into WOT
+000104 df95                      	rcall write_byte		// Write the above to the bus
+000105 df89                      	rcall read_bit			// slave Acknowledge (no error checking yet)
                                  
-000105 df7b                      	rcall stop_condition	// stop con
+000106 df7a                      	rcall stop_condition	// stop con
                                  
-000106 e184                      	ldi DEL, 20
-000107 dfbf                      	rcall delay
+000107 e184                      	ldi DEL, 20
+000108 dfbf                      	rcall delay
                                  
-000108 9508                      	ret
+000109 9508                      	ret
                                  
                                  
                                  /* Read byte from eeprom
@@ -1028,246 +1030,246 @@ C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\main.asm(232): I
                                     Result stored on RBytr*/
                                  EEP_READ_BYTE:
                                  
-000109 df6f                      	rcall start_condition	// start con
+00010a df6e                      	rcall start_condition	// start con
                                  
-00010a ea40                      	ldi WOT, EEP_W			// EEP addr + write slave identifier into WOT
-00010b df8e                      	rcall write_byte		// Write the above to the bus
-00010c df82                      	rcall read_bit			// slave Acknowledge (no error checking yet)
+00010b ea40                      	ldi WOT, EEP_W			// EEP addr + write slave identifier into WOT
+00010c df8d                      	rcall write_byte		// Write the above to the bus
+00010d df81                      	rcall read_bit			// slave Acknowledge (no error checking yet)
                                  
-00010d e08a                      	ldi DEL, 10				// TAKE 5
-00010e dfb8                      	rcall delay
+00010e e08a                      	ldi DEL, 10				// TAKE 5
+00010f dfb8                      	rcall delay
                                  
-00010f 2f4f                      	mov WOT, EEH			// value of EEH (memory high byte) into WOT
-000110 df89                      	rcall write_byte		// Write the above to the bus
-000111 df7d                      	rcall read_bit			// slave Acknowledge (no error checking yet)
+000110 2f4f                      	mov WOT, EEH			// value of EEH (memory high byte) into WOT
+000111 df88                      	rcall write_byte		// Write the above to the bus
+000112 df7c                      	rcall read_bit			// slave Acknowledge (no error checking yet)
                                  
-000112 2f4e                      	mov WOT, EEL			// value of EEL (memory low byte) into WOT
-000113 df86                      	rcall write_byte		// Write the above to the bus
-000114 df7a                      	rcall read_bit			// slave Acknowledge (no error checking yet)
+000113 2f4e                      	mov WOT, EEL			// value of EEL (memory low byte) into WOT
+000114 df85                      	rcall write_byte		// Write the above to the bus
+000115 df79                      	rcall read_bit			// slave Acknowledge (no error checking yet)
                                  
-000115 df63                      	rcall start_condition	// repeated start con
+000116 df62                      	rcall start_condition	// repeated start con
                                  
-000116 ea41                      	ldi WOT, EEP_R			// EEP addr + read slave identifier into WOT
-000117 df82                      	rcall write_byte		// Write the above to the bus
-000118 df76                      	rcall read_bit			// slave Acknowledge (no error checking yet)
+000117 ea41                      	ldi WOT, EEP_R			// EEP addr + read slave identifier into WOT
+000118 df81                      	rcall write_byte		// Write the above to the bus
+000119 df75                      	rcall read_bit			// slave Acknowledge (no error checking yet)
                                  
-000119 e085                      	ldi DEL, 5				// TAKE 5
-00011a dfac                      	rcall delay
+00011a e085                      	ldi DEL, 5				// TAKE 5
+00011b dfac                      	rcall delay
                                   
-00011b df86                      	rcall read_byte			// read a byte into RBytr for use 
-00011c df72                      	rcall read_bit			// Master Not Acknowledge 
+00011c df85                      	rcall read_byte			// read a byte into RBytr for use 
+00011d df71                      	rcall read_bit			// Master Not Acknowledge 
                                  
-00011d df63                      	rcall stop_condition	// stop con
+00011e df62                      	rcall stop_condition	// stop con
                                  
-00011e 9508                      	ret
+00011f 9508                      	ret
                                  
                                  /* Write byte to eeprom
                                     Address located in Z
                                     Data locate in DAT	*/
                                  EEP_WRITE_BYTE:
                                  
-00011f df59                      	rcall start_condition	// start con
+000120 df58                      	rcall start_condition	// start con
                                  
-000120 ea40                      	ldi WOT, EEP_W			// EEP addr + write slave identifier into WOT
-000121 df78                      	rcall write_byte		// Write the above to the bus
-000122 df6c                      	rcall read_bit			// slave Acknowledge (no error checking yet)
+000121 ea40                      	ldi WOT, EEP_W			// EEP addr + write slave identifier into WOT
+000122 df77                      	rcall write_byte		// Write the above to the bus
+000123 df6b                      	rcall read_bit			// slave Acknowledge (no error checking yet)
                                  
-000123 e08a                      	ldi DEL, 10				// TAKE 5
-000124 dfa2                      	rcall delay
+000124 e08a                      	ldi DEL, 10				// TAKE 5
+000125 dfa2                      	rcall delay
                                  
-000125 2f4f                      	mov WOT, EEH			// value of EEH (memory high byte) into WOT
-000126 df73                      	rcall write_byte		// Write the above to the bus
-000127 df67                      	rcall read_bit			// slave Acknowledge (no error checking yet)
+000126 2f4f                      	mov WOT, EEH			// value of EEH (memory high byte) into WOT
+000127 df72                      	rcall write_byte		// Write the above to the bus
+000128 df66                      	rcall read_bit			// slave Acknowledge (no error checking yet)
                                  
-000128 2f4e                      	mov WOT, EEL			// value of EEL (memory low byte) into WOT
-000129 df70                      	rcall write_byte		// Write the above to the bus
-00012a df64                      	rcall read_bit			// slave Acknowledge (no error checking yet)
+000129 2f4e                      	mov WOT, EEL			// value of EEL (memory low byte) into WOT
+00012a df6f                      	rcall write_byte		// Write the above to the bus
+00012b df63                      	rcall read_bit			// slave Acknowledge (no error checking yet)
                                  
-00012b 2f46                      	mov WOT, DAT			// value of DAT into WOT
-00012c df6d                      	rcall write_byte		// Write the above to the bus
-00012d df61                      	rcall read_bit			// slave Acknowledge (no error checking yet)
+00012c 2f46                      	mov WOT, DAT			// value of DAT into WOT
+00012d df6c                      	rcall write_byte		// Write the above to the bus
+00012e df60                      	rcall read_bit			// slave Acknowledge (no error checking yet)
                                  
-00012e df52                      	rcall stop_condition	// stop con
+00012f df51                      	rcall stop_condition	// stop con
                                  
-00012f 9508                      	ret
+000130 9508                      	ret
                                  
                                  PCF_READ_TIME:
                                  
-000130 e0b0                      	ldi r27, 0x00			// set sram pointer to ramstart
-000131 e4a0                      	ldi r26, 0x40
+000131 e0b0                      	ldi r27, 0x00			// set sram pointer to ramstart
+000132 e4a0                      	ldi r26, 0x40
                                  	
-000132 df46                      	rcall start_condition	// start con
+000133 df45                      	rcall start_condition	// start con
                                  
-000133 ea42                      	ldi WOT, PCF_W			// PCF addr + write slave identifier into WOT
-000134 df65                      	rcall write_byte		// Write the above to the bus
-000135 df59                      	rcall read_bit			// slave Acknowledge (no error checking yet)
+000134 ea42                      	ldi WOT, PCF_W			// PCF addr + write slave identifier into WOT
+000135 df64                      	rcall write_byte		// Write the above to the bus
+000136 df58                      	rcall read_bit			// slave Acknowledge (no error checking yet)
                                  
-000136 e08a                      	ldi DEL, 10				// TAKE 5
-000137 df8f                      	rcall delay
+000137 e08a                      	ldi DEL, 10				// TAKE 5
+000138 df8f                      	rcall delay
                                  
-000138 e042                      	ldi WOT, VL_seconds		// set address pointer to VL_seconds
-000139 df60                      	rcall write_byte		// Write the above to the bus
-00013a df54                      	rcall read_bit			// slave Acknowledge (no error checking yet)
+000139 e042                      	ldi WOT, VL_seconds		// set address pointer to VL_seconds
+00013a df5f                      	rcall write_byte		// Write the above to the bus
+00013b df53                      	rcall read_bit			// slave Acknowledge (no error checking yet)
                                  
-00013b df3d                      	rcall start_condition	// start con
+00013c df3c                      	rcall start_condition	// start con
                                  
-00013c ea43                      	ldi WOT, PCF_R			// PCF addr + write slave identifier into WOT
-00013d df5c                      	rcall write_byte		// Write the above to the bus
-00013e df50                      	rcall read_bit			// slave Acknowledge (no error checking yet)
+00013d ea43                      	ldi WOT, PCF_R			// PCF addr + write slave identifier into WOT
+00013e df5b                      	rcall write_byte		// Write the above to the bus
+00013f df4f                      	rcall read_bit			// slave Acknowledge (no error checking yet)
                                  
-00013f e085                      	ldi DEL, 5				// TAKE 5
-000140 df86                      	rcall delay
+000140 e085                      	ldi DEL, 5				// TAKE 5
+000141 df86                      	rcall delay
                                  
                                  
-000141 e017                      	ldi LOP, 7				// set the loop to 7 variables
+000142 e017                      	ldi LOP, 7				// set the loop to 7 variables
                                   
                                  	pcf_l_b:
                                  
-000142 df5f                      	rcall read_byte			// read a byte into RBytr for use 
-000143 df4b                      	rcall read_bit			// Master Not Acknowledge 
+000143 df5e                      	rcall read_byte			// read a byte into RBytr for use 
+000144 df4a                      	rcall read_bit			// Master Not Acknowledge 
                                  
-000144 933d                      	ST X+, RBytr			// store each successive in sram
-000145 951a                      	DEC LOP					// lop--;
+000145 933d                      	ST X+, RBytr			// store each successive in sram
+000146 951a                      	DEC LOP					// lop--;
                                  
-000146 3010                      	cpi LOP, 0				// if its 0 move on
-000147 f7d1                      	brne pcf_l_b
+000147 3010                      	cpi LOP, 0				// if its 0 move on
+000148 f7d1                      	brne pcf_l_b
                                  
-000148 df38                      	rcall stop_condition	// stop con
+000149 df37                      	rcall stop_condition	// stop con
                                  
-000149 9508                      	ret
+00014a 9508                      	ret
                                  
                                  
                                  
                                  load_prescaler: // reduces prescaler by 1 each time the sub is run by "blink faster" 
                                  
-00014a 95a8                      	wdr
+00014b 95a8                      	wdr
                                  
-00014b 2700                      	clr GPR
-00014c bf01                      	out WDTCSR, GPR			// clean up the wtachdog registers
+00014c 2700                      	clr GPR
+00014d bf01                      	out WDTCSR, GPR			// clean up the wtachdog registers
                                  
-00014d b701                      	in GPR, WDTCSR			// load the clean one
+00014e b701                      	in GPR, WDTCSR			// load the clean one
                                  
-00014e 2f7c                      	mov GPRB, WPS			// do the requisite maths an=d bit setting
-00014f 7077                      	andi GPRB, 0B0111
-000150 2b07                      	or GPR, GPRB
+00014f 2f7c                      	mov GPRB, WPS			// do the requisite maths an=d bit setting
+000150 7077                      	andi GPRB, 0B0111
+000151 2b07                      	or GPR, GPRB
                                  
-000151 2f7c                      	mov GPRB, WPS
-000152 0f77                      	lsl GPRB
+000152 2f7c                      	mov GPRB, WPS
 000153 0f77                      	lsl GPRB
-000154 7270                      	andi GPRB, 0B00100000
-000155 2b07                      	or GPR, GPRB
+000154 0f77                      	lsl GPRB
+000155 7270                      	andi GPRB, 0B00100000
+000156 2b07                      	or GPR, GPRB
                                  
-000156 bf01                      	out WDTCSR, GPR
+000157 bf01                      	out WDTCSR, GPR
                                  
-000157 b701                      	in GPR, WDTCSR
-000158 6400                      	ori GPR, (1<<WDIE)
-000159 7f07                      	andi GPR, ~(1<<WDE)
-00015a bf01                      	out WDTCSR, GPR			// loads watchdog register
+000158 b701                      	in GPR, WDTCSR
+000159 6400                      	ori GPR, (1<<WDIE)
+00015a 7f07                      	andi GPR, ~(1<<WDE)
+00015b bf01                      	out WDTCSR, GPR			// loads watchdog register
                                  
-00015b 9508                      	ret
+00015c 9508                      	ret
                                  
                                  blink_faster:	// decrements the prescaler and reloads the watchdog
                                  
-00015c 95ca                      	dec WPS
-00015d fdc7                      	sbrc WPS,7
-00015e e0c9                      	ldi WPS, 0x09
+00015d 95ca                      	dec WPS
+00015e fdc7                      	sbrc WPS,7
+00015f e0c9                      	ldi WPS, 0x09
                                  
-00015f 2f6c                      	mov DAT, WPS
-000160 dfe9                      	rcall load_prescaler
+000160 2f6c                      	mov DAT, WPS
+000161 dfe9                      	rcall load_prescaler
                                  
-000161 9508                      	ret
+000162 9508                      	ret
                                  
                                  accel_event:	// runs whenever the accelerometer is knocked, saves data to memory
                                  	
-000162 dff9                      	rcall blink_faster		// up the prescaler 
+000163 dff9                      	rcall blink_faster		// up the prescaler 
                                  
-000163 2fed                      	mov EEL, EEC
-000164 95d3                      	inc EEC
-000165 e568                      	ldi DAT, 0x58
-000166 dfb8                      	rcall EEP_WRITE_BYTE
+000164 2fed                      	mov EEL, EEC
+000165 95d3                      	inc EEC
+000166 e568                      	ldi DAT, 0x58
+000167 dfb8                      	rcall EEP_WRITE_BYTE
                                  
-000167 ef8f                      	ldi DEL, 255
-000168 df5e                      	rcall delay
+000168 ef8f                      	ldi DEL, 255
+000169 df5e                      	rcall delay
                                  
-000169 2fed                      	mov EEL, EEC
-00016a 95d3                      	inc EEC
-00016b e568                      	ldi DAT, 0x58
-00016c dfb2                      	rcall EEP_WRITE_BYTE
+00016a 2fed                      	mov EEL, EEC
+00016b 95d3                      	inc EEC
+00016c e568                      	ldi DAT, 0x58
+00016d dfb2                      	rcall EEP_WRITE_BYTE
                                  
-00016d ef8f                      	ldi DEL, 255
-00016e df58                      	rcall delay
+00016e ef8f                      	ldi DEL, 255
+00016f df58                      	rcall delay
                                  
-00016f 2fed                      	mov EEL, EEC
-000170 95d3                      	inc EEC
-000171 e568                      	ldi DAT, 0x58
-000172 dfac                      	rcall EEP_WRITE_BYTE
+000170 2fed                      	mov EEL, EEC
+000171 95d3                      	inc EEC
+000172 e568                      	ldi DAT, 0x58
+000173 dfac                      	rcall EEP_WRITE_BYTE
                                  
-000173 ef8f                      	ldi DEL, 255
-000174 df52                      	rcall delay
+000174 ef8f                      	ldi DEL, 255
+000175 df52                      	rcall delay
                                  
-000175 2fed                      	mov EEL, EEC
-000176 95d3                      	inc EEC
-000177 e568                      	ldi DAT, 0x58
-000178 dfa6                      	rcall EEP_WRITE_BYTE
+000176 2fed                      	mov EEL, EEC
+000177 95d3                      	inc EEC
+000178 e568                      	ldi DAT, 0x58
+000179 dfa6                      	rcall EEP_WRITE_BYTE
                                  
-000179 ef8f                      	ldi DEL, 255
-00017a df4c                      	rcall delay
+00017a ef8f                      	ldi DEL, 255
+00017b df4c                      	rcall delay
                                  
-00017b 2fed                      	mov EEL, EEC
-00017c 95d3                      	inc EEC
-00017d e568                      	ldi DAT, 0x58
-00017e dfa0                      	rcall EEP_WRITE_BYTE
+00017c 2fed                      	mov EEL, EEC
+00017d 95d3                      	inc EEC
+00017e e568                      	ldi DAT, 0x58
+00017f dfa0                      	rcall EEP_WRITE_BYTE
                                  
-00017f ef8f                      	ldi DEL, 255
-000180 df46                      	rcall delay
+000180 ef8f                      	ldi DEL, 255
+000181 df46                      	rcall delay
                                  
-000181 2fed                      	mov EEL, EEC
-000182 95d3                      	inc EEC
-000183 e568                      	ldi DAT, 0x58
-000184 df9a                      	rcall EEP_WRITE_BYTE
+000182 2fed                      	mov EEL, EEC
+000183 95d3                      	inc EEC
+000184 e568                      	ldi DAT, 0x58
+000185 df9a                      	rcall EEP_WRITE_BYTE
                                  
-000185 ef8f                      	ldi DEL, 255
-000186 df40                      	rcall delay
+000186 ef8f                      	ldi DEL, 255
+000187 df40                      	rcall delay
                                  
-000187 2fed                      	mov EEL, EEC
-000188 95d3                      	inc EEC
-000189 e06a                      	ldi DAT, 0x0a
-00018a df94                      	rcall EEP_WRITE_BYTE
+000188 2fed                      	mov EEL, EEC
+000189 95d3                      	inc EEC
+00018a e06a                      	ldi DAT, 0x0a
+00018b df94                      	rcall EEP_WRITE_BYTE
                                  
-00018b 9508                      	ret
+00018c 9508                      	ret
                                  
                                  button_event:	// runs whenever the button is pressed, dumps data over uart
                                  
-00018c ef8f                      	ldi DEL, 255			// set wait 
+00018d ef8f                      	ldi DEL, 255			// set wait 
                                  
                                  	wait:					// wait until the button is released
-00018d ded4                      	rcall read_SCL
-00018e 3021                      	cpi RBitr, (1<<SCL)
-00018f f7e9                      	brne wait
+00018e ded3                      	rcall read_SCL
+00018f 3021                      	cpi RBitr, (1<<SCL)
+000190 f7e9                      	brne wait
                                  
-000190 df36                      	rcall delay				// wait a bunch
+000191 df36                      	rcall delay				// wait a bunch
                                  
-000191 e0c9                      	ldi WPS, 0x09
-000192 2f6c                      	mov DAT, WPS
-000193 dfb6                      	rcall load_prescaler	// clear the prescaler
+000192 e0c9                      	ldi WPS, 0x09
+000193 2f6c                      	mov DAT, WPS
+000194 dfb6                      	rcall load_prescaler	// clear the prescaler
                                  
-000194 e010                      	ldi LOP, 0x00			// clear loop var and memory locations
-000195 e0f0                      	ldi EEH, 0x00		
-000196 e0e0                      	ldi EEL, 0x00
+000195 e010                      	ldi LOP, 0x00			// clear loop var and memory locations
+000196 e0f0                      	ldi EEH, 0x00		
+000197 e0e0                      	ldi EEL, 0x00
                                  
                                  	// loop through every memory address and send contents over uart
                                  	BYL_s:
-000197 9513                      	inc LOP
-000198 95e3                      	inc EEL
+000198 9513                      	inc LOP
+000199 95e3                      	inc EEL
                                  
-000199 df6f                      	rcall EEP_READ_BYTE
-00019a 2f63                      	mov DAT, RBytr
-00019b df10                      	rcall uart_byte
+00019a df6f                      	rcall EEP_READ_BYTE
+00019b 2f63                      	mov DAT, RBytr
+00019c df0f                      	rcall uart_byte
                                  
-00019c 3f1f                      	cpi LOP, 255
-00019d f7c9                      	brne BYL_s
+00019d 3f1f                      	cpi LOP, 255
+00019e f7c9                      	brne BYL_s
                                  
-00019e 9508                      	ret
+00019f 9508                      	ret
                                  
                                  	
                                  
@@ -1307,7 +1309,7 @@ cln   :   0 clr   :   5 cls   :   0 clt   :   0 clv   :   0 clz   :   0
 com   :   0 cp    :   0 cpc   :   0 cpi   :   9 cpse  :   0 dec   :   8 
 eor   :   0 icall :   0 ijmp  :   0 in    :  18 inc   :  10 ld    :   0 
 ldd   :   0 ldi   :  66 lds   :   0 lsl   :   4 lsr   :   1 mov   :  24 
-neg   :   0 nop   :  40 or    :   3 ori   :   6 out   :  20 pop   :   0 
+neg   :   0 nop   :  41 or    :   3 ori   :   6 out   :  20 pop   :   0 
 push  :   0 rcall : 120 ret   :  28 reti  :   2 rjmp  :   4 rol   :   0 
 ror   :   0 sbc   :   0 sbci  :   0 sbi   :   0 sbic  :   0 sbis  :   0 
 sbr   :   0 sbrc  :   4 sbrs  :   4 sec   :   0 seh   :   0 sei   :   3 
@@ -1319,7 +1321,7 @@ Instructions used: 26 out of 99 (26.3%)
 "ATtiny10" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x00033e    818      0    818    1024  79.9%
+[.cseg] 0x000000 0x000340    820      0    820    1024  80.1%
 [.dseg] 0x000040 0x000060      0      0      0      32   0.0%
 [.eseg] 0x000000 0x000000      0      0      0       0      -
 

@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.6  C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\main.asm Mon Mar 20 21:46:53 2017
+AVRASM ver. 2.2.6  C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\main.asm Mon Mar 20 21:48:04 2017
 
 
 EQU  SIGNATURE_000 0000001e
@@ -285,16 +285,16 @@ DEF  EEC          r29
 CSEG skip         00000009
 CSEG PCI0_vect    00000030
 CSEG WDT_vect     00000039
-CSEG LIS_CMD      000000fb
-CSEG EEP_READ_BYTE 00000109
-CSEG load_prescaler 0000014a
+CSEG LIS_CMD      000000fc
+CSEG EEP_READ_BYTE 0000010a
+CSEG load_prescaler 0000014b
 CSEG start        0000002c
 CSEG read_SCL     00000062
-CSEG button_event 0000018c
+CSEG button_event 0000018d
 CSEG read_PB1     00000068
-CSEG accel_event  00000162
+CSEG accel_event  00000163
 CSEG low_SDA      00000046
-CSEG delay        000000c7
+CSEG delay        000000c8
 CSEG high_SDA     0000004d
 CSEG low_SCL      00000051
 CSEG high_SCL     00000058
@@ -312,14 +312,14 @@ CSEG r_b_s        000000a4
 CSEG uart_byte    000000ac
 CSEG u_a_s        000000b3
 CSEG uart_recieve 000000c6
-CSEG d_s          000000c7
-CSEG delayL       000000cd
-CSEG dLH_s        000000cd
-CSEG dL_s         000000ce
-CSEG LIS_READ     000000e8
-CSEG EEP_WRITE_BYTE 0000011f
-CSEG PCF_READ_TIME 00000130
-CSEG pcf_l_b      00000142
-CSEG blink_faster 0000015c
-CSEG wait         0000018d
-CSEG BYL_s        00000197
+CSEG d_s          000000c8
+CSEG delayL       000000ce
+CSEG dLH_s        000000ce
+CSEG dL_s         000000cf
+CSEG LIS_READ     000000e9
+CSEG EEP_WRITE_BYTE 00000120
+CSEG PCF_READ_TIME 00000131
+CSEG pcf_l_b      00000143
+CSEG blink_faster 0000015d
+CSEG wait         0000018e
+CSEG BYL_s        00000198
