@@ -129,18 +129,14 @@ rcall LIS_CMD
 
 // ---------------
 
-//  load the next available eeprom address into its pointer
-//  stored in 0 and 1 of the eeprom itself
 
 ldi EEH, 0x00		// set location 0
 ldi EEL, 0x00		// set location 0
 
-rcall EEP_READ_BYTE	// load the low byte
-
-mov EEC, RBytr		// set the new write addr
 ldi EEC, 0x00
 
 inc EEC		// increment location
+
 
 // ---------------
 
@@ -161,10 +157,11 @@ out PCMSK, GPR
 ldi GPR, 0B0001
 out PCICR, GPR
 
-sei
 
 // ----------------------
+#include "deadData.asm"
 
+sei
 start:				// main loop
 
 ldi GPR, 0B0101		// Sleep code
@@ -196,6 +193,9 @@ PCI0_vect:
 
 	sbrs RBitr, PB1 // if it was run accel
 	rcall accel_event
+
+	ldi DEL, 255				// TAKE 5
+	rcall delay
 
 	sei
 
@@ -496,7 +496,7 @@ accel_event:	// runs whenever the accelerometer is knocked, saves data to memory
 
 	mov EEL, EEC
 	inc EEC
-	ldi DAT, 0x58
+	ldi DAT, 0x48
 	rcall EEP_WRITE_BYTE
 
 	ldi DEL, 255
@@ -504,7 +504,7 @@ accel_event:	// runs whenever the accelerometer is knocked, saves data to memory
 
 	mov EEL, EEC
 	inc EEC
-	ldi DAT, 0x58
+	ldi DAT, 0x65
 	rcall EEP_WRITE_BYTE
 
 	ldi DEL, 255
@@ -512,7 +512,7 @@ accel_event:	// runs whenever the accelerometer is knocked, saves data to memory
 
 	mov EEL, EEC
 	inc EEC
-	ldi DAT, 0x58
+	ldi DAT, 0x6c
 	rcall EEP_WRITE_BYTE
 
 	ldi DEL, 255
@@ -520,7 +520,7 @@ accel_event:	// runs whenever the accelerometer is knocked, saves data to memory
 
 	mov EEL, EEC
 	inc EEC
-	ldi DAT, 0x58
+	ldi DAT, 0x6c
 	rcall EEP_WRITE_BYTE
 
 	ldi DEL, 255
@@ -528,7 +528,7 @@ accel_event:	// runs whenever the accelerometer is knocked, saves data to memory
 
 	mov EEL, EEC
 	inc EEC
-	ldi DAT, 0x58
+	ldi DAT, 0x6f
 	rcall EEP_WRITE_BYTE
 
 	ldi DEL, 255
@@ -536,7 +536,7 @@ accel_event:	// runs whenever the accelerometer is knocked, saves data to memory
 
 	mov EEL, EEC
 	inc EEC
-	ldi DAT, 0x58
+	ldi DAT, 0x21
 	rcall EEP_WRITE_BYTE
 
 	ldi DEL, 255
@@ -544,7 +544,7 @@ accel_event:	// runs whenever the accelerometer is knocked, saves data to memory
 
 	mov EEL, EEC
 	inc EEC
-	ldi DAT, 0x0a
+	ldi DAT, 0x40
 	rcall EEP_WRITE_BYTE
 
 	ret
@@ -568,17 +568,23 @@ button_event:	// runs whenever the button is pressed, dumps data over uart
 	ldi EEH, 0x00		
 	ldi EEL, 0x00
 
+
 	// loop through every memory address and send contents over uart
 	BYL_s:
 	inc LOP
 	inc EEL
 
 	rcall EEP_READ_BYTE
+
 	mov DAT, RBytr
 	rcall uart_byte
 
+	cpi RBytr, 0x40
+	breq end 
+
 	cpi LOP, 255
 	brne BYL_s
+	end:
 
 	ret
 

@@ -10,6 +10,7 @@
  <SOURCE_FILE>C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\main.asm</SOURCE_FILE>
  <INCLUDED_FILES>
   <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATtiny_DFP\1.1.102\avrasm\inc\tn10def.inc</FILE>
+  <FILE>C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\deadData.asm</FILE>
   <FILE>C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\i2clib.asm</FILE>
   <FILE>C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\uartlib.asm</FILE>
  </INCLUDED_FILES>
@@ -25,18 +26,19 @@
  </OUTPUT_FILES>
  <LABELS>
   <skip><FILE>C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\main.asm</FILE><LINE>83</LINE></skip>
-  <PCI0_vect><FILE>C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\main.asm</FILE><LINE>186</LINE></PCI0_vect>
+  <PCI0_vect><FILE>C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\main.asm</FILE><LINE>183</LINE></PCI0_vect>
   <WDT_vect><FILE>C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\main.asm</FILE><LINE>205</LINE></WDT_vect>
   <LIS_CMD><FILE>C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\main.asm</FILE><LINE>315</LINE></LIS_CMD>
-  <EEP_READ_BYTE><FILE>C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\main.asm</FILE><LINE>342</LINE></EEP_READ_BYTE>
   <load_prescaler><FILE>C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\main.asm</FILE><LINE>454</LINE></load_prescaler>
-  <start><FILE>C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\main.asm</FILE><LINE>168</LINE></start>
+  <EEP_WRITE_BYTE><FILE>C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\main.asm</FILE><LINE>380</LINE></EEP_WRITE_BYTE>
+  <delayL><FILE>C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\main.asm</FILE><LINE>248</LINE></delayL>
+  <start><FILE>C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\main.asm</FILE><LINE>165</LINE></start>
   <read_SCL><FILE>C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\i2clib.asm</FILE><LINE>62</LINE></read_SCL>
   <button_event><FILE>C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\main.asm</FILE><LINE>552</LINE></button_event>
   <read_PB1><FILE>C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\i2clib.asm</FILE><LINE>74</LINE></read_PB1>
   <accel_event><FILE>C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\main.asm</FILE><LINE>493</LINE></accel_event>
-  <low_SDA><FILE>C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\i2clib.asm</FILE><LINE>6</LINE></low_SDA>
   <delay><FILE>C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\main.asm</FILE><LINE>238</LINE></delay>
+  <low_SDA><FILE>C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\i2clib.asm</FILE><LINE>6</LINE></low_SDA>
   <high_SDA><FILE>C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\i2clib.asm</FILE><LINE>19</LINE></high_SDA>
   <low_SCL><FILE>C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\i2clib.asm</FILE><LINE>28</LINE></low_SCL>
   <high_SCL><FILE>C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\i2clib.asm</FILE><LINE>41</LINE></high_SCL>
@@ -55,15 +57,15 @@
   <u_a_s><FILE>C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\uartlib.asm</FILE><LINE>19</LINE></u_a_s>
   <uart_recieve><FILE>C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\uartlib.asm</FILE><LINE>48</LINE></uart_recieve>
   <d_s><FILE>C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\main.asm</FILE><LINE>239</LINE></d_s>
-  <delayL><FILE>C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\main.asm</FILE><LINE>248</LINE></delayL>
   <dLH_s><FILE>C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\main.asm</FILE><LINE>249</LINE></dLH_s>
   <dL_s><FILE>C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\main.asm</FILE><LINE>251</LINE></dL_s>
   <LIS_READ><FILE>C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\main.asm</FILE><LINE>282</LINE></LIS_READ>
-  <EEP_WRITE_BYTE><FILE>C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\main.asm</FILE><LINE>380</LINE></EEP_WRITE_BYTE>
+  <EEP_READ_BYTE><FILE>C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\main.asm</FILE><LINE>342</LINE></EEP_READ_BYTE>
   <PCF_READ_TIME><FILE>C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\main.asm</FILE><LINE>407</LINE></PCF_READ_TIME>
   <pcf_l_b><FILE>C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\main.asm</FILE><LINE>437</LINE></pcf_l_b>
   <blink_faster><FILE>C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\main.asm</FILE><LINE>482</LINE></blink_faster>
   <wait><FILE>C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\main.asm</FILE><LINE>556</LINE></wait>
-  <BYL_s><FILE>C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\main.asm</FILE><LINE>572</LINE></BYL_s>
+  <BYL_s><FILE>C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\main.asm</FILE><LINE>573</LINE></BYL_s>
+  <end><FILE>C:\Users\lukej\Documents\Atmel Studio\7.0\tiny10test\tiny10test\main.asm</FILE><LINE>587</LINE></end>
  </LABELS>
 </ASSEMBLER_INFO>
